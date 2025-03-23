@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,31 +6,42 @@
     <title>Form Login</title>
 </head>
 <body>
+
     <form id="nameForm">
         <label for="fname">First Name:</label>
         <input type="text" id="fname" name="fname" required>
         <br><br>
+
         <label for="lname">Last Name:</label>
         <input type="text" id="lname" name="lname" required>
         <br><br>
+
         <button type="submit">Submit</button>
     </form>
 
     <script>
-        document.getElementById("nameForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevents page reload
+        function getFormvalue(event) {
+            event.preventDefault(); // Prevent page reload
             
+            // Retrieve values and trim spaces
             let firstName = document.getElementById("fname").value.trim();
             let lastName = document.getElementById("lname").value.trim();
 
+            // Validate input
             if (firstName === "" || lastName === "") {
                 alert("Please enter both first and last names.");
                 return;
             }
 
+            // Display full name
             alert(firstName + " " + lastName);
-        });
+        }
+
+        // Attach event listener to the form
+        document.getElementById("nameForm").addEventListener("submit", getFormvalue);
     </script>
+
 </body>
 </html>
+
 
